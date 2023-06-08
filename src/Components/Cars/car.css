@@ -1,0 +1,21 @@
+.Car_div .Car_left {
+    max-width: 450px;
+}
+.Car_div .Car_left h4{
+    font-size: 18px;
+}
+.Car_div .Car_left h4:first-child{
+    font-size: 20px;
+    font-weight: 500 !important;
+}
+.Car_div .Car_left h4 {
+    font-weight: 700;
+    font-size: 16px;
+}
+.Car_div .Car_left h4 b{
+    font-weight: 500;
+    opacity: 0.7;
+}
+.h4description b{
+    font-size: 16px;
+}

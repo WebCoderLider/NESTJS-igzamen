@@ -1,0 +1,43 @@
+.AdminPanel{
+    display: flex;
+    align-items: center;
+}
+.AdminPanel .AdminLeft{
+    padding: 0 25px;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 10px lightgrey;
+}
+.AdminPanel .AdminLeft h4{
+    font-size: 1.8rem;
+    font-weight: bold;
+    font-style: italic;
+}
+.AdminPanel .Admin_Right{
+    margin: 0 0 0 250px;
+    padding: 2rem;
+}
+
+.Admin_Right .CategoriesPage .table{
+    width: 70vw;
+    margin: 55px 0 0 0;
+}
+
+.table img{
+    width: 70px;
+}
+
+.modal{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+}

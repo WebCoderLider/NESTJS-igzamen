@@ -1,0 +1,22 @@
+.Login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.Login .Modal button,
+.Login .Modal input{
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 200px;
+}
+.Login .Modal .Modal{
+    box-shadow: 0 0 15px lightskyblue;
+    padding: 20px;
+    border-radius: 8px;
+}

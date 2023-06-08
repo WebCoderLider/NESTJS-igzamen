@@ -1,0 +1,23 @@
+.Cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.Cards .Cardd{
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px lightgoldenrodyellow;
+    margin: 15px;
+}
+.modelstext{
+    margin: 0 0 55px 200px;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.modelturlari{
+    margin: 0 0 55px 200px;
+}
