@@ -32,3 +32,43 @@
     height: 200px;
     border-radius: 100%;
 }
+
+
+.ModalEditProfile{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: modalka 0.2s;
+}
+
+@keyframes modalka {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.ModalEditProfile .EditProfile {
+    background: white;
+    padding: 3rem 1.5rem;
+    box-shadow: 0 0 10px white;
+    border-radius: 8px;
+}
+
+.ModalEditProfile .EditProfile form input{
+    display: block;
+    margin: 10px 0;
+}
+
+.closebtn{
+    margin-left: 90%;
+    margin-bottom: 3rem !important;
+}
