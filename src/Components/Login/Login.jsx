@@ -64,7 +64,7 @@ function Login() {
         })
             .then((res) => {
                 localStorage.setItem('token', res.token)
-                window.location.href = '/useradmin'
+                setLogin(false)
                 return res.json();
             })
 

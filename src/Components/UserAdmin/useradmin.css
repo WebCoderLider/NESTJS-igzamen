@@ -1,0 +1,34 @@
+.AdminPanel{
+    display: flex;
+}
+.AdminPanel .LeftAdmin{
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.AdminPanel .LeftAdmin img{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    margin: 20px 0 20px 0;
+}
+.AdminPanel .RightAdmin{
+    margin: 0 0 0 250px;
+}
+
+.AdminPanel .RightAdmin .userheaderimg {
+    display: flex;
+    align-items: center;   
+    justify-content: space-around;
+    width: 80vw;
+    height: 40vh;
+}
+
+.AdminPanel .RightAdmin .userheaderimg img{
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+}

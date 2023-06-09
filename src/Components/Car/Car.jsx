@@ -31,6 +31,7 @@ function Cars() {
                             <h4>Distance::<b> {data.cars_distance}</b></h4>
                             <h4>Gearbook: <b>{data.cars_gearbook}</b></h4>
                             <h4 className='h4description'>Description: <b>{data.cars_description}</b></h4>
+                            <button className='btn btn-outline-primary'>Saqlash</button>
                         </div>
                         <div className="Car_Right">
                             <h1>{data.cars_marka}</h1>

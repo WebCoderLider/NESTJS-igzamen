@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './admin.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Admin() {
     const category_name = useRef();
@@ -65,12 +66,12 @@ function Admin() {
                 setResponseMessage('An error occurred');
             });
     }
-    const [CarsCategory, setCarsCategory] = useState(true)
+    const [CarsCategory, setCarsCategory] = useState('on')
     const carsClick = () => {
-        setCarsCategory(false)
+        setCarsCategory('of')
     }
     const categoryClick = () => {
-        setCarsCategory(true)
+        setCarsCategory('on')
     }
     const [selectedTanirovka, setSelectedTanirovka] = useState('');
     const [selectedGearbook, setSelectedGearbook] = useState('');
@@ -145,6 +146,23 @@ function Admin() {
                 setResponseMessage('An error occurred');
             });
     }
+    const [usersclick, setUsersclick] = useState(false)
+    const [userdata, setUserData] = useState([])
+    const usersclicked = () => {
+        setUsersclick(prev => !prev)
+    }
+    useEffect(() => {
+        fetch('http://localhost:3000/users/')
+            .then(res => res.json())
+            .then(data => setUserData(data))
+    }, [userdata])
+    const deleteuser = (user_id) => {
+        fetch(`http://localhost:3000/users/${user_id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => alert('user deleted'))
+    }
     return (
         <div>
             <div className="AdminPanel">
@@ -152,6 +170,7 @@ function Admin() {
                     <h4 className="btn">admin panel</h4>
                     <button className="btn btn-primary d-block w-100 m-1" onClick={categoryClick}>categories</button>
                     <button className="btn btn-primary d-block w-100 m-1" onClick={carsClick}>cars</button>
+                    <button className="btn btn-primary d-block w-100 m-1" onClick={usersclicked}>users</button>
                 </div>
                 <div className="Admin_Right">
                     {
@@ -286,6 +305,38 @@ function Admin() {
                         )
                     }
                 </div>
+
+                {
+                    usersclick ? (
+
+                        <div className="UsersModal">
+                            <div className='bg-light'>
+                                <div className="header d-flex justify-content-around">
+                                    <h1>users modal</h1>
+                                    <button className='btn btn-warning' onClick={usersclicked}>close</button>
+                                </div>
+                                <table className="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">username</th>
+                                            <th scope="col">delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            userdata ? userdata.map(el => (
+                                                <tr key={el.user_id}>
+                                                    <td>{el.username}</td>
+                                                    <td><button onClick={() => deleteuser(el.user_id)} className='btn btn-danger'>delete</button></td>
+                                                </tr>
+                                            )) : ''
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    ) : ''
+                }
             </div>
         </div>
     );
