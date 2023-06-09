@@ -66,12 +66,12 @@ function Admin() {
                 setResponseMessage('An error occurred');
             });
     }
-    const [CarsCategory, setCarsCategory] = useState('on')
+    const [CarsCategory, setCarsCategory] = useState(true)
     const carsClick = () => {
-        setCarsCategory('of')
+        setCarsCategory(false)
     }
     const categoryClick = () => {
-        setCarsCategory('on')
+        setCarsCategory(true)
     }
     const [selectedTanirovka, setSelectedTanirovka] = useState('');
     const [selectedGearbook, setSelectedGearbook] = useState('');
@@ -84,7 +84,7 @@ function Admin() {
             .catch((error) => {
                 console.error('Error fetching categories:', error);
             });
-    }, []);
+    }, [categories]);
     const handleTanirovkaChange = (event) => {
         setSelectedTanirovka(event.target.value);
     };
@@ -108,20 +108,16 @@ function Admin() {
         formData.append('car_price', event.target.car_price.value); // Add the car_price field
 
         try {
-            const response = await fetch('http://localhost:3000/cars', {
+            const response = await fetch('http://localhost:3000/cars/', {
                 method: 'POST',
                 body: formData,
             });
 
-            if (response.ok) {
-                console.log('Car created successfully');
-                // Reset form fields
-                event.target.reset();
-                setSelectedTanirovka('');
-                setSelectedGearbook('');
-            } else {
-                console.error('Failed to create car');
-            }
+            console.log(response.message);
+            // Reset form fields
+            event.target.reset();
+            setSelectedTanirovka('');
+            setSelectedGearbook('');
         } catch (error) {
             console.error('An error occurred', error);
         }

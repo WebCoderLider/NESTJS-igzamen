@@ -21,18 +21,20 @@ function Cars() {
       <div className="Cards">
         {
           data ? (
-            data.cars.map(el => (
-              <Link to={`/car/${el.car_id}`} key={el.car_id}>
-                <div className="Cardd text-left bg-light">
-                  <img src={`http://localhost:3000/cars/img/${el.cars_img}`} alt="" />
-                  <h4>{el.cars_marka}</h4>
-                  <h5>{el.cars_distance}</h5>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <p>Loading...</p>
-          )
+            data.cars != null ? (
+              data.cars.map(el => (
+                <Link to={`/car/${el.car_id}`} key={el.car_id}>
+                  <div className="Cardd text-left bg-light">
+                    <img src={`http://localhost:3000/cars/img/${el.cars_img}`} alt="" />
+                    <h4>{el.cars_marka}</h4>
+                    <h5>{el.cars_distance}</h5>
+                  </div>
+                </Link>
+              ))
+            ) : (
+              <p>Loading...</p>
+            )
+          ) : ''
         }
       </div>
     </div>

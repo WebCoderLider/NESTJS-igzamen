@@ -22,8 +22,12 @@ function Login() {
             .then(data => {
                 localStorage.setItem('token', data.token)
                 // Handle the response from the server
-                console.log(data.token);
-                window.location.href = '/useradmin'
+                if (data.token != null) {
+                    window.location.href = '/useradmin'
+                }
+                else{
+                    alert('username yoki password xato kiritildi')
+                }
             })
             .catch(error => {
                 // Handle any errors that occur during the request
@@ -87,18 +91,21 @@ function Login() {
                                 type="text"
                                 placeholder="Enter username"
                                 ref={usernameRef}
+                                required
                             />
                             <input
                                 className="form-control"
-                                type="email"
+                                type={"email"}
                                 placeholder="Enter email"
                                 ref={emailRef}
+                                required
                             />
                             <input
                                 className="form-control"
                                 type="password"
                                 placeholder="Enter password"
                                 ref={passwordRef}
+                                required
                             />
                             <input
                                 className="form-control"

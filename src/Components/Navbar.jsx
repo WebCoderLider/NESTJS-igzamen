@@ -43,7 +43,8 @@ function Navbar() {
 
   return (
     <div>
-      <div className="navbar d-flex justify-content-end p-5">
+      <div className="navbar d-flex justify-content-around p-5">
+      <Link to='/' className='btn btn-primary'>Home</Link>
         {
           localStorage.getItem('token') ? (
             <div>
