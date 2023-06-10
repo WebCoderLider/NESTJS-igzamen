@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './admin.css';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 function Admin() {
     const category_name = useRef();
@@ -159,6 +157,56 @@ function Admin() {
             .then(res => res.json())
             .then(data => alert('user deleted'))
     }
+
+    const AdminUsername = useRef()
+    const AdminPassword = useRef()
+
+    const handleLogin = async () => {
+        const username = AdminUsername.current.value;
+        const password = AdminPassword.current.value;
+
+        const response = await fetch('http://localhost:3000/admin/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.token != undefined) {
+                    localStorage.setItem('authToken', data.token)
+                }
+                else {
+                    alert("login yoki parol notog'ri")
+                }
+            })
+    };
+    const [changepsw, setChanepsw] = useState(false)
+    const changePasswordbtn = () => {
+        setChanepsw(prev => !prev)
+    }
+
+    const changepswref = useRef();
+    const changeusernameref = useRef()
+
+    const changepsqpost = () => {
+        const username = changeusernameref.current.value
+        const password = changepswref.current.value
+        fetch(`http://localhost:3000/admin/${1}/password`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data); // Password updated successfully
+            })
+    };
+
+
     return (
         <div>
             <div className="AdminPanel">
@@ -167,6 +215,7 @@ function Admin() {
                     <button className="btn btn-primary d-block w-100 m-1" onClick={categoryClick}>categories</button>
                     <button className="btn btn-primary d-block w-100 m-1" onClick={carsClick}>cars</button>
                     <button className="btn btn-primary d-block w-100 m-1" onClick={usersclicked}>users</button>
+                    <button className="btn btn-primary d-block w-100 m-1" onClick={changePasswordbtn}>change password</button>
                 </div>
                 <div className="Admin_Right">
                     {
@@ -333,7 +382,37 @@ function Admin() {
                         </div>
                     ) : ''
                 }
+                {
+                    changepsw ? (
+                        <div>
+                            <div className="ChangePSW">
+                                <div className="FORMCHANGE">
+                                    <div className="d-flex justify-content-between" onClick={changePasswordbtn}><h4>Edit password</h4> <button className='btn btn-primary'>X</button></div>
+                                    <input type="text" ref={changeusernameref} placeholder='New password...' className='form-control' required />
+                                    <input type="password" ref={changepswref} placeholder='New password...' className='form-control' required />
+                                    <button onClick={changepsqpost} className='btn btn-warning'>Change Password</button>
+                                </div>
+                            </div>
+                        </div>
+                    ) : ''
+                }
             </div>
+
+
+            {
+                localStorage.getItem('authToken') ? (
+                    ''
+                ) : (
+                    <div className="Kirish">
+                        <div className="FormAdmin">
+                            <h4>Login</h4>
+                            <input type="text" ref={AdminUsername} className='form-control' placeholder='username....' />
+                            <input type="password" ref={AdminPassword} className='form-control' placeholder='password....' />
+                            <button onClick={handleLogin} className='btn btn-primary'>Login...</button>
+                        </div>
+                    </div>
+                )
+            }
         </div>
     );
 }

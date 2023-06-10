@@ -57,3 +57,58 @@
     border-radius: 5px;
     box-shadow: 0 0 5px white;
 }
+
+
+
+
+
+
+
+
+
+.Kirish{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 1);
+}
+
+.Kirish .FormAdmin {
+    background: white;
+    padding: 3rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px white;
+}
+
+.Kirish .FormAdmin input{
+    margin: 1rem 0;
+}
+
+
+
+.ChangePSW{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.9);
+}
+.ChangePSW .FORMCHANGE{
+    background: white;
+    padding: 3rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 15px white;
+}
+
+.ChangePSW .FORMCHANGE input{
+    margin: 1rem 0;
+}
